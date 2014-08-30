@@ -34,7 +34,7 @@ of any kind.
 \author{
 Dominique-Laurent Couturier, Jun Ma, Stephane Heritier. 
 
-Maintainer: Dominique-Laurent Couturier \email{dominique.couturier@mq.edu.au}.
+Maintainer: Dominique-Laurent Couturier \email{dlc48@medschl.cam.ac.uk}.
 }
 \references{
 Ma, J. and Heritier, S. and Lo, S. (2014), On the Maximum Penalised

@@ -101,7 +101,7 @@ coxph_mpl=function(formula,data,subset,na.action,control,...){
 		lambda     = 1/(2*sigma2)
 		# check for convergence
 		cat(iter,"\tlambda =",lambda,"\titer =",fit$iter,"\n")	
-		if((abs(lambda-lambda_old)/lambda_old)<(control$tol)){break}
+		if((abs(lambda-lambda_old)/abs(lambda_old))<(control$tol)){break}
 		}
 	### God save the King		
 	if(control$max.iter[1]>1) control$smooth = lambda 
