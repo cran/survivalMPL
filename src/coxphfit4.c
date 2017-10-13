@@ -5,6 +5,11 @@
 #include <R_ext/BLAS.h>
 #include <R_ext/Lapack.h>
 
+void R_init_survivalMPL(DllInfo* info) {
+	R_registerRoutines(info, NULL, NULL, NULL, NULL);
+	R_useDynamicSymbols(info, TRUE);
+}
+
 SEXP coxph_mpl(SEXP status2, SEXP X2, SEXP meanX2, SEXP R2, SEXP psi2, SEXP PSI2, 
 	         SEXP Beta0, SEXP Theta0, SEXP gamma2, SEXP kappa2,
 	         SEXP convVal2, SEXP minTheta2, SEXP maxiter2)
