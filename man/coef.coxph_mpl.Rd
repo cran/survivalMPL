@@ -42,13 +42,15 @@ only the parameter estimates larger than \code{min.Theta} (see
 \seealso{
 \code{\link{coxph_mpl}} and  \code{\link{summary.coxph_mpl}}.
 }
-\author{Dominique-Laurent Couturier.}
+\author{Dominique-Laurent Couturier, Maurizio Manuguerra}
 \examples{
+\dontrun{
 data(lung)
 
 fit_mpl <- coxph_mpl(Surv(time, status == 2) ~ age + sex + ph.karno + wt.loss, data = lung)
 
 coef(fit_mpl)
-coef(summary(fit_mpl, se = "M1HM1", full=TRUE))
+coef(summary(fit_mpl))
+}
 }
 \keyword{survival}

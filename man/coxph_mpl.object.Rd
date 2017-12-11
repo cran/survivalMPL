@@ -86,5 +86,5 @@ to the model formula indicated in \code{\link{coxph_mpl}}.
 \code{\link{plot.coxph_mpl}},\code{\link{residuals.coxph_mpl}}
 and \code{\link{predict.coxph_mpl}}.   
 }
-\author{Dominique-Laurent Couturier.}
+\author{Dominique-Laurent Couturier, Maurizio Manuguerra}
 \keyword{survival}

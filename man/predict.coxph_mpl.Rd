@@ -22,7 +22,7 @@ a fitted Cox proportional hazard model.
 }
 \item{se}{
 a character string indicating a method to build confidence intevals for the predictions. 
-Possibilites are \code{"H"}, \code{"M1QM1"}, \code{"M2QM2"}, \code{"M1HM1"} and \code{"M2HM2"}. 
+Possibilites are \code{"H"}, \code{"M2QM2"} and \code{"M2HM2"}. 
 Refer to the \bold{Details} Section of \code{\link{coxph_mpl}}.  
 Default is \code{se="M2QM2"}. 
 }
@@ -79,11 +79,13 @@ the lower and upper bound of the prediction confidence interval.
 \code{\link{coxph_mpl.object}}, \code{\link{residuals.coxph_mpl}} and
 \code{\link{summary.coxph_mpl}}.
 }
-\author{Dominique-Laurent Couturier}
+\author{Dominique-Laurent Couturier, Maurizio Manuguerra}
 \examples{
+\dontrun{
 data(lung)
 fit_mpl <- coxph_mpl(Surv(time, status == 2) ~ age + sex + ph.karno + wt.loss, data = lung)
 
 plot(predict(fit_mpl))
+}
 }
 \keyword{survival}

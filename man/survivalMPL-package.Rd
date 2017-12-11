@@ -15,7 +15,7 @@ proportional hazard Cox models using maximum penalised likelihood (MPL).
 \details{
 This package allows to perform simultaneous estimation of the regression
 coefficients and baseline hazard function in Cox proportional hazard models,
-with right censored data and independent censoring, by maximising a penalised
+with right, left and interval censored data and independent censoring, by maximising a penalised
 likelihood, in which a penalty function is used to smooth the baseline hazard 
 estimate. 
 
@@ -32,9 +32,9 @@ This software is accepted by users "as is" and without warranties or guarantees
 of any kind.
 }
 \author{
-Dominique-Laurent Couturier, Jun Ma, Stephane Heritier. 
+Dominique-Laurent Couturier, Jun Ma, Stephane Heritier, Maurizio Manuguerra. 
 
-Maintainer: Dominique-Laurent Couturier \email{dlc48@medschl.cam.ac.uk}.
+Maintainer: Maurizio Manuguerra \email{maurizio.manuguerra@mq.edu.au}.
 }
 \references{
 Ma, J. and Heritier, S. and Lo, S. (2014), On the Maximum Penalised

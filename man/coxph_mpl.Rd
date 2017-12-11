@@ -76,19 +76,20 @@ defined by Moore and Sadler (2008). Inference, as described by Ma, Heritier and
 Lo (2014), is then corrected accordingly (refer to Moore and Sadler (2008)) by
 adequately 'cutting' the corresponding covariance matrix.
 
-There are currently 5 ways to perform inference on model parameters:  
+There are currently 3 ways to perform inference on model parameters:  
 
 Let \eqn{H} denote the Hessian matrix of the unpenalised likelihood, 
-\eqn{M_{1}} denote the product of the first order derivative of the penalised 
-likelihood by the transpose of the first order derivative of the unpenalised 
-likelihood, \eqn{Q} denote the product of the first order derivative of 
+%\eqn{M_{1}} denote the product of the first order derivative of the penalised 
+%likelihood by the transpose of the first order derivative of the unpenalised 
+%likelihood, 
+\eqn{Q} denote the product of the first order derivative of 
 the penalised likelihood by its transpose, and \eqn{M_{2}} denote the second 
 order derivative of the penalised likelihood. Then, 
 \itemize{
 \item \code{'H'} refers to \eqn{H^{-1}}, the inverse of the Hessian matrix, 
-\item \code{'M1QM1'}, refers to the sandwich formula \eqn{M_{1}^{-1} Q (M_{1}^{-1})^{T}},
+% \item \code{'M1QM1'}, refers to the sandwich formula \eqn{M_{1}^{-1} Q (M_{1}^{-1})^{T}},
 \item \code{'M2QM2'}, refers to the sandwich formula \eqn{M_{2}^{-1} Q M_{2}^{-1}},
-\item \code{'M1HM1'}, refers to the sandwich formula \eqn{M_{1}^{-1} H (M_{1}^{-1})^{T}},
+% \item \code{'M1HM1'}, refers to the sandwich formula \eqn{M_{1}^{-1} H (M_{1}^{-1})^{T}},
 \item \code{'M2HM2'}, refers to the sandwich formula \eqn{M_{2}^{-1} H M_{2}^{-1}}.
 }
 Simulations analysing the coverage levels of confidence intervals for the 
@@ -112,14 +113,16 @@ Moore, T. J. and Sadler, B. M. and Kozick R. J. (2008), Maximum-Likelihood
 Estimation, the Cramer-Rao Bound, and the Method of Scoring With Parameter 
 Constraints, \emph{IEEE Transactions On Signal Processing} \bold{56, 3}, 895-907. 
 }
-\author{Dominique-Laurent Couturier, Jun Ma, Stephane Heritier. Design inspired by the function 
+\author{Dominique-Laurent Couturier, Jun Ma, Stephane Heritier, Maurizio Manuguerra. Design inspired by the function 
 \code{\link[survival]{coxph}} of the \code{survival} package.}
 \examples{
+\dontrun{
 ## data lung of the survival package. Refer to ?lung.
 data(lung)
 
 fit_mpl <- coxph_mpl(Surv(time, status == 2) ~ age + sex + ph.karno + wt.loss, data = lung)
 
 fit_mpl
+}
 }
 \keyword{survival}

@@ -1,5 +1,3 @@
-useDynLib(survivalMPL)
-
 export(
 "coxph_mpl",
 "print.coxph_mpl",
@@ -31,4 +29,5 @@ importFrom("graphics", "abline", "arrows", "axis", "legend", "lines",
 importFrom("stats", "contrasts", "dnorm", "model.extract",
              "model.matrix", "pnorm", "printCoefmat", "quantile",
              "runif", "terms")
+importFrom("MASS", "ginv")
 			 

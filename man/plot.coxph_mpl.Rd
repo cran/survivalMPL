@@ -22,7 +22,7 @@ a fitted Cox proportional hazard model.
 \item{se}{
 an inference method (to build confidence intevals for the baseline hazard, 
 cumulative baseline hazard and baseline survival functions). 
-Possibilites are \code{"H"}, \code{"M1QM1"}, \code{"M2QM2"}, \code{"M1HM1"} and \code{"M2HM2"}. 
+Possibilites are \code{"H"}, \code{"M2QM2"} and \code{"M2HM2"}. 
 Refer to the \bold{Details} Section of \code{\link{coxph_mpl}}.  
 Default is \code{se="M2QM2"}. 
 }
@@ -56,12 +56,14 @@ baseline survival functions are obtained using the delta method.
 \code{\link{coxph_mpl}},  \code{\link{coxph_mpl.control}},
 \code{\link{coxph_mpl.object}}  and  \code{\link{summary.coxph_mpl}}.
 }
-\author{Dominique-Laurent Couturier}
+\author{Dominique-Laurent Couturier, Maurizio Manuguerra}
 \examples{
+\dontrun{
 data(lung)
 fit_mpl <- coxph_mpl(Surv(time, status == 2) ~ age + sex + ph.karno + wt.loss, data = lung)
 
 par(mfrow=c(2,2))
 plot(fit_mpl, ask=FALSE, cex.main=.75)
+}
 }
 \keyword{survival}

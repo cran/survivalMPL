@@ -12,12 +12,13 @@ impossible argument values (like a negative number of events per base,
 for example) are avoided.
 }
 \usage{
-coxph_mpl.control(n.obs=NULL, basis = "uniform", smooth = NULL, max.iter=c(50,1e+05),
+coxph_mpl.control(n.obs=NULL, basis = "uniform", 
+        smooth = NULL, max.iter=c(150,7.5e+04,1e+06),
         tol=1e-7, n.knots = NULL, n.events_basis = NULL, 
         range.quant = c(0.075,.9), cover.sigma.quant = .25, 
         cover.sigma.fixed=.25, min.theta = 1e-10, penalty = 2L,
-        order = 3L, kappa = 1/.6, epsilon = 1e-50, ties = "unique", 
-        seed = NULL)
+        order = 3L, kappa = 1/.6, epsilon = c(1e-16, 1e-10), 
+        ties = "epsilon", seed = NULL)
 }
 \arguments{
 \item{n.obs}{
@@ -41,9 +42,10 @@ specifying \code{smooth=0}. The effect of the smooting parameter over the estima
 difficult to interpret.    
 }
 \item{max.iter}{
-a vector of 2 integers defining the maximum number of iterations for the smooth 
+a vector of 3 integers defining the maximum number of iterations for the smooth 
 parameter (first value) and for the Beta and Theta (second value) parameters 
-to attempt for convergence. Default is \code{max.iter=c(50,1e+05)}.
+to attempt for convergence. The third value is the total number of iterations allawed.
+Default is \code{max.iter=c(150,7.5e+04,1e+06)}.
 }
 \item{tol}{
 the convergence tolerence value. Convergence is achieved when the maximum 
@@ -115,9 +117,10 @@ when the penalised likelihood doesn't increase during the iterative process.
 Default is \code{kappa=1/.6}.
 }
 \item{epsilon}{
-a value indicating the minimum value of baseline parameter estimates \bold{in} the 
-fitting algorithm in order to avoid problems with logarithms. Default is 
-\code{epsilon=1e-50}
+a vector of 2 values indicating the minimum distance from 1 and from 0 for - 
+respectively - the survival function and the baseline parameter estimates in order to 
+avoid problems with logarithms \bold{in} the fitting algorithm . 
+Default is \code{epsilon=c(1e-16, 1e-10)}
 }
 \item{ties}{
 a character string indicating a method to handle duplicated outcomes when defining the 
@@ -125,7 +128,7 @@ knots sequence (see \code{n.events_basis} and \code{n.knots}). Current available
 options are \code{"epsilon"} which add a random noise smaller than 1e-10 to each
 duplicate fully observed (i.e., non censored) outcomes, and \code{"unique"} which
 delete duplicated fully observed (i.e., non censored) outcomes when defing the 
-knot sequence. Default is \code{ties="unique"}.
+knot sequence. Default is \code{ties="epsilon"}.
 }
 \item{seed}{
 \code{NULL} or an integer vector compatible with \code{\link{.Random.seed}}: 
@@ -151,7 +154,7 @@ Constraints, \emph{IEEE Transactions On Signal Processing} \bold{56, 3}, 895-907
 Ramsay, J. O. (1988), Monotone Regression Splines in Action, 
 \emph{Statistical Science} \bold{3, 4}, 425-441. 
 }
-\author{Dominique-Laurent Couturier.}
+\author{Dominique-Laurent Couturier, Maurizio Manuguerra}
 \seealso{\code{\link{coxph_mpl}}
 }
 \keyword{survival}
