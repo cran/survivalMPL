@@ -22,7 +22,7 @@ estimate.
 Optimisation is achieved using a new iterative algorithm, which combines 
 Newton's method and the multiplicative iterative algorithm by Ma (2010), and 
 respects the non-negativity constraints on the baseline hazard estimate 
-(refer to Ma, Heritier and Lo (2014)).  
+(refer to Ma, Couturier, Heritier and Marschner (2021)).  
 
 Valid inferences for the regression coefficients and the baseline hazard, 
 cumulative baseline hazard and survival functions as well as for their 
@@ -34,9 +34,11 @@ of any kind.
 \author{
 Dominique-Laurent Couturier, Jun Ma, Stephane Heritier, Maurizio Manuguerra. 
 
-Maintainer: Maurizio Manuguerra \email{maurizio.manuguerra@mq.edu.au}.
+Maintainer: Dominique-Laurent Couturier \email{dominique-laurent.couturier@cruk.cam.ac.uk}.
 }
 \references{
+Ma, J. and Couturier, D.-L., and Heritier, S. and Marschner, I.C. (2021), Penalized likelihood estimation of the proportional hazards model for survival data with interval censoring. \emph{International Journal of Biostatistics},doi:10.1515/ijb-2020-0104.
+
 Ma, J. and Heritier, S. and Lo, S. (2014), On the Maximum Penalised
 Likelihood Approach for Proportional Hazard Models with Right Censored 
 Survival Data. \emph{Computational Statistics and Data Analysis} \bold{74}, 142-156.

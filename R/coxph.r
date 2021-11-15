@@ -67,7 +67,7 @@ coxph_mpl=function(formula,data,subset,na.action,control,...){
     }
   }
   # X
-  X           = model.matrix(mt, mf, contrasts)
+  X           = model.matrix(mt, mf)#, contrasts)
   X           = X[,!apply(X, 2, function(x) all(x==x[1])), drop=FALSE]
   if(ncol(X)==0){
     X   = matrix(0,n,1)
@@ -390,7 +390,7 @@ coxph_mpl=function(formula,data,subset,na.action,control,...){
     pos            = c(if(noX){FALSE}else{rep(TRUE,p)},(M_theta_m1>control$min.theta & apply(H[(p+1):(p+m),(p+1):(p+m)],2,sum)>0))
     #MM: (G+Q)^-1
     temp           = try(chol2inv(chol(H[pos,pos]+(1/s_sigma2_old)*M_Rstar_ll[pos,pos])),silent=T)  
-    if(class(temp)!="try-error"&!any(is.infinite(temp))){
+    if(class(temp)[1]!="try-error"&!any(is.infinite(temp))){
       HRinv[pos,pos]=temp
     ##MM: is ginv(H[pos,pos]) right? Forgot Q?
     }else{HRinv[pos,pos]=MASS::ginv(H[pos,pos])}
@@ -437,7 +437,7 @@ coxph_mpl=function(formula,data,subset,na.action,control,...){
   pos            = c(if(noX){FALSE}else{rep(TRUE,p)},(M_theta_m1>control$min.theta & apply(H[(p+1):(p+m),(p+1):(p+m)],2,sum)>0))
   Minv_1 = Minv_2 = Hinv = matrix(0,p+m,p+m)                        
   temp = try(chol2inv(chol(M_2[pos,pos])),silent=T) 
-  if(class(temp)!="try-error"){
+  if(class(temp)[1]!="try-error"){
     Minv_2[pos,pos] = temp        
     cov_NuNu_M2QM2  = M_corr_ll%*%(Minv_2%*%Q%*%Minv_2)%*%t(M_corr_ll)
     cov_NuNu_M2HM2  = M_corr_ll%*%(Minv_2%*%H%*%Minv_2)%*%t(M_corr_ll)
@@ -448,7 +448,7 @@ coxph_mpl=function(formula,data,subset,na.action,control,...){
     se.Eta_M2QM2    = se.Eta_M2HM2   = rep(NA,p+m)
   }
   temp = try(chol2inv(chol(H[pos,pos])),silent=T) 
-  if(class(temp)!="try-error"){
+  if(class(temp)[1]!="try-error"){
     Hinv[pos,pos] = temp
     cov_NuNu_H    = M_corr_ll%*%Hinv%*%t(M_corr_ll) 
     se.Eta_H      = sqrt(diag(cov_NuNu_H))
@@ -778,21 +778,6 @@ penalty_mpl=function(control,knots){
 }
 
 
-
-.nf = function(file){
-  temp=file
-  vect.colw=seq(1,dim(temp)[2])[sapply(temp,class)=="factor"]
-  if(length(vect.colw)>0){
-    for(colw in 1:length(vect.colw)){temp[,vect.colw[colw]]=as.character(temp[,vect.colw[colw]])}
-  }
-  temp
-}
-
-.ac = function(...){as.character(...)}
-
-.p = function(...,sep=""){paste(...,sep=sep)}
-
-.an = function(...){as.numeric(...)}
 
 
 

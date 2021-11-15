@@ -20,7 +20,7 @@ coxph_mpl(formula, data, subset, na.action, control, \dots)
 \item{formula}{
 a formula object, with the response on the left of a \code{~} operator, and 
 the terms on the right.  The response must be a survival object as 
-returned by the \code{\link[survival]{Surv}} function. 
+returned by the \code{\link[survival]{Surv}} function (in the \code{\link[survival]{Surv}}, use type = "interval2" with interval censored data). 
 }
 \item{data}{
 a data.frame in which to interpret the variables named in 
@@ -63,7 +63,7 @@ estimate.
 Optimisation is achieved using a new iterative algorithm, which combines 
 Newton's method and the multiplicative iterative algorithm proposed by 
 Ma (2010), and respects the non-negativity constraints on the baseline 
-hazard estimate (refer to Jun, Heritier and Lo (2014)).  
+hazard estimate (refer to Ma, Couturier, Heritier and Marschner (2021)).  
 
 The centered \bold{X} matrix is used in the optimisation process to get a 
 better shaped (penalised) log-likelihood. Baseline hazard parameter estimates 
@@ -101,7 +101,9 @@ performs better when using the uniform basis, and that
 \code{\link{coxph_mpl.object}},  \code{\link{coxph_mpl.control}},
 \code{\link{summary.coxph_mpl}}  and  \code{\link{plot.coxph_mpl}}.
 }
-\references{Ma, J. and Heritier, S. and Lo, S. (2014), On the Maximum Penalised
+\references{Ma, J. and Couturier, D.-L., and Heritier, S. and Marschner, I.C. (2021), Penalized likelihood estimation of the proportional hazards model for survival data with interval censoring. \emph{International Journal of Biostatistics},doi:10.1515/ijb-2020-0104.
+
+Ma, J. and Heritier, S. and Lo, S. (2014), On the Maximum Penalised
 Likelihood Approach for Proportional Hazard Models with Right Censored 
 Survival Data. \emph{Computational Statistics and Data Analysis} \bold{74}, 142-156.
 
