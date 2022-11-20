@@ -184,7 +184,11 @@ coxph_mpl=function(formula,data,subset,na.action,control,...){
         M_tX_nlp%*%diag(c((M_S_nl1/(1-M_S_nl1)^2*M_H_nl1^2-M_S_nl1/(1-M_S_nl1)*M_H_nl1)),n.ctype[3],n.ctype[3])%*%M_X_nlp+            
         M_tX_nip%*%diag(c((M_S1_ni1*M_S2_ni1/M_S1mS2_ni1^2*(M_H2_ni1-M_H1_ni1)^2+
                              (M_S1_ni1*M_H1_ni1-M_S2_ni1*M_H2_ni1)/M_S1mS2_ni1
-        )),n.ctype[4],n.ctype[4])%*%M_X_nip                
+        )),n.ctype[4],n.ctype[4])%*%M_X_nip   
+        # avoid division by 0 (leading to the issue spotted by Kenneth Beath [email of 20220112])
+        if(p==1){
+            if(M_hessbeta_p1[1,1]==0){M_hessbeta_p1[1,1]=control$epsilon[1]}
+        }        
       M_stepbeta_p1 = chol2inv(chol(M_hessbeta_p1))%*%M_gradbeta_p1
       M_beta_p1     = M_beta_p1_OLD+s_omega*M_stepbeta_p1
       M_mu_no1   = exp(M_X_nop%*%M_beta_p1)

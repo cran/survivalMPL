@@ -67,9 +67,6 @@ the number of events; \code{'n.ties'}, the number of duplicated observations; \c
 the number of regression parameters; and \code{'m'}, the number of baseline hazard 
 parameters. 
 }
-\item{iter}{
-number of iterations used. 
-}
 \item{call}{
 the matched call.
 }

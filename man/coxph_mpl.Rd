@@ -114,17 +114,33 @@ maximum penalised likelihood tomographic reconstruction.
 Moore, T. J. and Sadler, B. M. and Kozick R. J. (2008), Maximum-Likelihood 
 Estimation, the Cramer-Rao Bound, and the Method of Scoring With Parameter 
 Constraints, \emph{IEEE Transactions On Signal Processing} \bold{56, 3}, 895-907. 
+
+Moore, D. K. (2016), Applied Survival Analysis Using R, \emph{Springer} . 
+
 }
 \author{Dominique-Laurent Couturier, Jun Ma, Stephane Heritier, Maurizio Manuguerra. Design inspired by the function 
 \code{\link[survival]{coxph}} of the \code{survival} package.}
 \examples{
 \dontrun{
-## data lung of the survival package. Refer to ?lung.
+## right censoring example based on the dataset 'lung' 
+## of the survival package (refer to ?lung)
+## with hazard approximated by means of a step function (default).
 data(lung)
 
 fit_mpl <- coxph_mpl(Surv(time, status == 2) ~ age + sex + ph.karno + wt.loss, data = lung)
 
-fit_mpl
+summary(fit_mpl)
+
+## interval censoring example 
+## (refer to ?bcos2 and to Moore (2016, example 12.2))
+## with hazard approximated by means of m-splines
+
+data(bcos2)
+
+fit_mpl <- coxph_mpl(Surv(left, right, type="interval2") ~ treatment, 
+                     data = bcos2, basis="m")
+summary(fit_mpl)
+
 }
 }
 \keyword{survival}
