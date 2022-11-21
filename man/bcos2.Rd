@@ -3,7 +3,7 @@
 \docType{data}
 \title{Breast Cosmesis Data}
 \description{
-Interval censored data described and given in full in Finkelstein and Wolfe (1985), discussed by More (2016, example 12.2) and available in the R package 'interval' (?\code{\link[interval]{bcos}}). Compared to the interval package version, bcos2 simply recode the lower value of left-censored data (NA instead of 0) and upper value of right-censored data (NA instead of Inf) to allow an easy identification of left-censored data by means of the function \code{\link[survival]{Surv}} when \code{type==interval2}. 
+Interval censored data described and given in full in Finkelstein and Wolfe (1985), discussed by More (2016, example 12.2) and available in the R package 'interval' (refer to ?bcos). Compared to the interval package version, bcos2 simply recode the lower value of left-censored data (NA instead of 0) and upper value of right-censored data (NA instead of Inf) to allow an easy identification of left-censored data by means of the function \code{\link[survival]{Surv}} when \code{type=="interval2"}. 
 }
 \usage{data(bcos2)}
 \format{

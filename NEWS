@@ -30,5 +30,11 @@ Changes:
 * amended code to allow models without covariates to be fitted,
 * removed a duplicated item in coxph_mpl.object.
 
+survivalMPL v0.2-3 (Release date: 2022-11-21)
+==============
+
+Changes:
+
+* sorted minor typos in documentation
 
 
