@@ -58,7 +58,7 @@ other parameters to be passed through to printing or plotting functions.
 \details{
 The available predictions incorporate the baseline hazard  
 (instantaneous risk) or cumulated baseline hazard estimate (survival function)
-and are thus absolute instead of relative (see \code{\link{predict.coxph}}).
+and are thus absolute instead of relative (see \code{\link[survival:predict.coxph]{predict.coxph}}).
 
 Prediction standard errors and confidence intervals are obtained by use of the delta 
 method. 
